@@ -86,29 +86,51 @@ alias gb+='git checkout -b'
 alias gb='git branch'
 
 function code~ {
-    local base_path=~/Repositories
+    local base_path=~/Repositories      
+    ls "$base_path"
+    echo -n "Enter the repository name: "
+    read repo_name
 
-    # Check if an argument is provided
-    if [ $# -eq 0 ]; then
-        cd "$base_path"
-	ls
-    else
-        local file_name=$1
-        cd "$base_path/$file_name"
-	nvim
-    fi
+    cd "$base_path/$repo_name" || return 1
+
+    echo -n "Choose an action: [1]nvim [2]dev [3]none :"
+    read action
+
+    case $action in
+        1) nvim ;;
+        2) npm run dev ;;
+        3) ls ;;
+        *) echo "Invalid choice. Exiting." ;;
+    esac
 }
 
 function git~ {
-  [ "$#" -ne 2 ] && echo "Usage: git~ <file_path> <commit_message>" && return 1 || {
-    local file_path=$1
-    local commit_message=$2
-
-    git pull
-    git add "$file_path"
-    git commit -m "$commit_message"
-    git push
-  }
+  git pull
+  echo -n "Which files would you like to commit? "
+  read files
+  local file_paths=($files)
+  [ "${#file_paths[@]}" -eq 0 ] && echo "No files specified. Exiting." && return 1
+  git add "${file_paths[@]}"
+  echo -n "Enter the commit message: "
+  read commit_message
+  while true; do
+    echo -n "Commit message: '$commit_message'. Do you want to use this message? (y/n): "
+    read confirm
+    case $confirm in
+      [Yy]* )
+        git commit -m "$commit_message"
+        git push
+	echo 'Your commit has been pushed!🚀'
+        break;;
+      [Nn]* )
+        echo -n "Enter a new commit message: "
+        read commit_message
+        ;;
+      * )
+        echo "Please enter 'y' or 'n'."
+        ;;
+    esac
+  done
 }
 
 export NVM_DIR="$HOME/.nvm"
