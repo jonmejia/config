@@ -3,7 +3,7 @@ return {
 	event = "VimEnter",
 	config = function()
 		local logo = [[
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣶⣶⣦⣄⡀⢀⣀⣤⣤⣄
+    ⠀⠀⠀⠀⠀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣶⣶⣦⣄⡀⢀⣀⣤⣤⣄
 ⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣆⠀⠀⠀⠀⠀⠀⢀⣄⠙⢿⣿⣟⣿⣿⣿⣿⣿⠇
 ⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⡀⠀⠀⠀⠀⢀⣿⣿⡇⠀⠈⢹⡏⠉⠉⠁⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⣿⡇⠀⠀⠀⠀⢸⣿⣿⡇⠀⠀⢸⡇⠀⠀⠀⠀⠀
@@ -23,7 +23,7 @@ return {
 ⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⣀⠀⠀⠀⢀⣠⣴⣿⠏⠀⠀⠀⠀⠀⠀
 ⠸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠉⠉⠉⠉⠉⠉⠙⠛⠿⠿⠿⠿⠟⠛⠿⠿⠿⠿⠿⠇⠀⠀⠀⠀⠀⠀⠀⠀
-	]]
+ ⠀⠀⠀	⠀]]
 		logo = string.rep("\n", 8) .. logo .. "\n\n"
 		require("dashboard").setup({
 			theme = "hyper",
@@ -41,6 +41,18 @@ return {
 						group = "Label",
 						action = "Telescope find_files",
 						key = "f",
+					},
+					{
+						action = "Telescope live_grep",
+						desc = " Find text",
+						icon = " ",
+						key = "g",
+					},
+					{
+						action = "qa",
+						desc = " Quit",
+						icon = " ",
+						key = "q",
 					},
 				},
 			},

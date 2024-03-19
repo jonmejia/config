@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global
 return {
 	{
 		"williamboman/mason.nvim",
@@ -24,7 +23,7 @@ return {
 			lspconfig.prismals.setup({})
 			lspconfig.marksman.setup({})
 
-			vim.keymap.set("n", "?", vim.lsp.buf.hover, {})
+			vim.keymap.set("n", "<leader>cd", vim.lsp.buf.hover, {})
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 		end,
 	},
