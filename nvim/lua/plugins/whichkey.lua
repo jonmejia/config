@@ -16,20 +16,21 @@ return {
 			["<leader>"] = {
 				f = {
 					name = "+file",
-					f = { "<cmd>Telescope find_files<cr>", "fzf" },
-					g = { "<cmd>Telescope live_grep<cr>", "grep" },
-					r = { "<cmd>Telescope oldfiles<cr>", "open recent" },
-					b = { "<cmd>Telescope buffers<cr>", "search open buffers" },
+					f = { "<cmd>Telescope find_files<cr>", "Find File" },
+					g = { "<cmd>Telescope live_grep<cr>", "Find Text" },
+					r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+					n = { "<cmd>enew<cr>", "New File" },
+					b = { "<cmd>Telescope buffers<cr>", "Search Open Buffers" },
 				},
 				c = {
 					name = "+code",
-					a = {"code actions"},
-					d = {"define"},
-					f = {"format"},
+					a = {"Code Actions"},
+					d = {"Define"},
+					f = {"Format"},
 
 				},
 
-				e = { ":Neotree filesystem reveal left toggle=true <CR>", "toggle file tree" },
+				e = { ":Neotree filesystem reveal left toggle=true <CR>", "Toggle File Tree" },
 			},
 		})
 	end,
