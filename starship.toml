@@ -1,0 +1,22 @@
+format = """
+[  ](bg:#ADBC9F fg:#12372A)\
+[\uE0B0](bg:#436850 fg:#ADBC9F)\
+$directory\
+[\uE0B0](bg:#12372A fg:#436850)\
+$git_branch\
+[\uE0B0](bg:#05FF00FF fg:#12372A)\
+\n$character"""
+
+[directory]
+style = "fg:#FBFADA bg:#436850"
+format = "[ $path ]($style)"
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:#12372A"
+format = '[[ $symbol $branch ](fg:#FBFADA bg:#12372A)]($style)'
