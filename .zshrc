@@ -16,6 +16,8 @@ alias gc='git checkout'
 alias gb+='git checkout -b'
 alias gb='git branch'
 
+alias git~='lazygit'
+
 function code~ {
     local base_path=~/Repositories      
     ls "$base_path"
@@ -24,44 +26,16 @@ function code~ {
 
     cd "$base_path/$repo_name" || return 1
 
-    echo -n "Choose an action: [1]nvim [2]dev [3]none :"
+    echo -n "Choose an action: [1]nvim [2]git [3]dev [4]cd && ls :"
     read action
 
     case $action in
         1) nvim ;;
-        2) npm run dev ;;
-        3) ls ;;
+        2) lazygit ;;
+        3) npm run dev ;;
+	4) ls;;
         *) echo "Invalid choice. Exiting." ;;
     esac
-}
-
-function git~ {
-  git pull
-  echo -n "Which files would you like to commit? "
-  read files
-  local file_paths=($files)
-  [ "${#file_paths[@]}" -eq 0 ] && echo "No files specified. Exiting." && return 1
-  git add "${file_paths[@]}"
-  echo -n "Enter the commit message: "
-  read commit_message
-  while true; do
-    echo -n "Commit message: '$commit_message'. Do you want to use this message? (y/n): "
-    read confirm
-    case $confirm in
-      [Yy]* )
-        git commit -m "$commit_message"
-        git push
-	echo 'Your commit has been pushed!🚀'
-        break;;
-      [Nn]* )
-        echo -n "Enter a new commit message: "
-        read commit_message
-        ;;
-      * )
-        echo "Please enter 'y' or 'n'."
-        ;;
-    esac
-  done
 }
 
 export NVM_DIR="$HOME/.nvm"
