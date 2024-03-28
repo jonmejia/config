@@ -18,19 +18,17 @@ return {
 					name = "+file",
 					f = { "<cmd>Telescope find_files<cr>", "Find File" },
 					g = { "<cmd>Telescope live_grep<cr>", "Find Text" },
-					r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-					n = { "<cmd>enew<cr>", "New File" },
-					b = { "<cmd>Telescope buffers<cr>", "Search Open Buffers" },
+					b = { "<cmd>Telescope buffers<cr>", "search buffers" },
 				},
 				c = {
 					name = "+code",
-					a = {"Code Actions"},
-					d = {"Define"},
-					f = {"Format"},
-
+					a = { "code actions" },
+					d = { "define" },
+					f = { "format" },
+					l = { "lint" },
 				},
 
-				e = { ":Neotree filesystem reveal left toggle=true <CR>", "Toggle File Tree" },
+				e = { ":Neotree filesystem reveal left toggle=true <CR>", "toggle file tree" },
 			},
 		})
 	end,
