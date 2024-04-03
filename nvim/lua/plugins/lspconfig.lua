@@ -9,7 +9,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "tsserver", "yamlls", "prismals", "marksman" },
+				ensure_installed = { "lua_ls", "tsserver", "yamlls", "prismals", "marksman", "gopls" },
 			})
 		end,
 	},
@@ -22,7 +22,7 @@ return {
 			lspconfig.yamlls.setup({})
 			lspconfig.prismals.setup({})
 			lspconfig.marksman.setup({})
-
+			lspconfig.gopls.setup({})
 			vim.keymap.set("n", "<leader>cd", vim.lsp.buf.hover, {})
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 		end,
