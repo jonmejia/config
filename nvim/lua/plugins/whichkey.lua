@@ -12,24 +12,24 @@ return {
 	},
 	config = function()
 		local wk = require("which-key")
-		wk.register({
-			["<leader>"] = {
-				f = {
-					name = "+file",
-					f = { "<cmd>Telescope find_files<cr>", "Find File" },
-					g = { "<cmd>Telescope live_grep<cr>", "Find Text" },
-					b = { "<cmd>Telescope buffers<cr>", "search buffers" },
-				},
-				c = {
-					name = "+code",
-					a = { "code actions" },
-					d = { "define" },
-					f = { "format" },
-					l = { "lint" },
-				},
+		wk.add(
+			{
+				-- Code related mappings
+				{ "<leader>c",  group = "code" },
+				{ "<leader>ca", desc = "Code Actions" },
+				{ "<leader>cd", desc = "Define" },
+				{ "<leader>cf", desc = "Format" },
+				{ "<leader>cl", desc = "Lint" },
 
-				e = { ":Neotree filesystem reveal left toggle=true <CR>", "toggle file tree" },
-			},
-		})
+				-- Toggle file tree
+				{ "<leader>e",  ":Neotree filesystem reveal left toggle=true <CR>", desc = "Toggle File Tree" },
+
+				-- File related mappings
+				{ "<leader>f",  group = "file" },
+				{ "<leader>fb", "<cmd>Telescope buffers<cr>",                       desc = "Search Buffers" },
+				{ "<leader>ff", "<cmd>Telescope find_files<cr>",                    desc = "Find File" },
+				{ "<leader>fg", "<cmd>Telescope live_grep<cr>",                     desc = "Find Text" },
+			}
+		)
 	end,
 }
